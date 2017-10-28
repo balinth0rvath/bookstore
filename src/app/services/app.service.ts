@@ -39,7 +39,7 @@ export class AppService {
 			this.selectedBookListChanged.next(this.selectedBookList);
 		}
 	}
-	
+
 	addToCart(book: Book) {
 		if (!this.isInCart(book)) {
 			this.selectedBookList.push(book);
@@ -72,12 +72,15 @@ export class AppService {
 		}
 
 		var headers = new Headers({
-			'Content-type': 'application/json; charset='+Config.encoding
+			'Content-type': 'application/json; charset=' + Config.encoding
 		});
 
 		var options = new RequestOptions({ headers: headers });
 
-		this.http.get(Config.getBookListURL + Config.searchParameter + searchTerm).subscribe(
+		this.http.get(Config.getBookListURL +
+			'?q=' + Config.searchParameter +
+			searchTerm +
+			'&maxResults=' + Config.maxResult).subscribe(
 			ret => {
 				this.object = ret.json();
 				if (this.object != null) {
@@ -105,6 +108,6 @@ export class AppService {
 			() => {
 				console.log('completed')
 			}
-		);
+			);
 	}
 }

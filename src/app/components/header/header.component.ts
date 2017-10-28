@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 	cartSize: number;
 
+	subscription: Subscription;
+
 	constructor(private as: AppService, 
 				private router: Router) {
 		this.cartSize = 0;
@@ -31,9 +33,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		this.as.initCart();
 	}
 
-	subscription: Subscription;
-
 	ngOnInit() {
+		this.as.fetchList('');
 		this.formInit();
 	}
 

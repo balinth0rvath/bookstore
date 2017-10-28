@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private as: AppService) { }
 
   ngOnInit() {
-    this.as.fetchList('');
+    
   }
 
 }

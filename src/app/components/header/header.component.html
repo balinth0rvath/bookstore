@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="row" style="margin-top:15px;">
+			<modal #cartModal>
+				<modal-header>
+					<h3>Cart</h3>
+				</modal-header>
+				<modal-content>
+					<a *ngFor="let book of selectedBookList" style="cursor:pointer" class="list-group-item clearfix" (click)="cartModal.close();onClickCartItem(book)">
+						<h4>{{ book.title }}</h4>
+						<div *ngFor="let author of book.authors">
+							<h6>{{ author }}</h6>
+						</div>
+					</a>
+				</modal-content>
+			</modal>
+			<div class="col-xs-12">
+				<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="navbar-right">
+					<div class="input-group form-group" style="margin-right: 10px">
+						<input type="text" class="form-control" placeholder="Title" formControlName="title">
+
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">Search</button>
+						</span>
+						<span class="input-group-btn">
+							<button class="btn btn-info" type="button" (click)="cartModal.open()">Cart
+								<span *ngIf="cartSize!=0" class="badge">{{ cartSize }}</span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</nav>

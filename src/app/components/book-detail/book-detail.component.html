@@ -1,0 +1,32 @@
+<div *ngIf="book!=null">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-1 col-md-10">
+        <h3>{{ book.title }}</h3>
+        <div *ngFor="let author of book.authors">
+          <h6>{{ author }}</h6>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-1 col-md-3">
+        <img [src]="book.thumbnail" alt="Missing book cover image" class="img-responsive">
+      </div>
+      <div class="col-xs-12 col-md-7">
+        <p>{{ book.description }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="!isInCart()">
+      <div class="col-xs-12 col-md-offset-1 col-md-3">
+        <input type="button" class="btn btn-success" value="Add to cart" (click)="onClickAddToCart()">
+      </div>
+    </div>
+    <div class="row" *ngIf="isInCart()">
+      <div class="col-xs-12 col-md-offset-1 col-md-3">
+        <input type="button" class="btn btn-danger" value="Remove from cart" (click)="onClickRemoveFromCart()">
+      </div>
+    </div>
+  </div>
+</div>

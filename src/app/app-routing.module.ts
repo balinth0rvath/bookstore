@@ -5,7 +5,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
     { path: 'book/:id', component: BookDetailComponent },
-    { path: '', component: BookListComponent }
+    { path: '', component: BookListComponent },
 ];
 
 @NgModule({

@@ -11,7 +11,9 @@
     <hr>
     <div class="row">
       <div class="col-xs-12 col-md-offset-1 col-md-3">
-        <img [src]="book.thumbnail" alt="Missing book cover image" class="img-responsive">
+        <img [src]="book.thumbnail" 
+            alt="Missing book cover image" 
+            class="img-responsive">
       </div>
       <div class="col-xs-12 col-md-7">
         <p>{{ book.description }}</p>
@@ -20,12 +22,18 @@
     <hr>
     <div class="row" *ngIf="!isInCart()">
       <div class="col-xs-12 col-md-offset-1 col-md-3">
-        <input type="button" class="btn btn-success" value="Add to cart" (click)="onClickAddToCart()">
+        <input type="button" 
+               class="btn btn-success" 
+               value="Add to cart" 
+               (click)="onClickAddToCart()">
       </div>
     </div>
     <div class="row" *ngIf="isInCart()">
       <div class="col-xs-12 col-md-offset-1 col-md-3">
-        <input type="button" class="btn btn-danger" value="Remove from cart" (click)="onClickRemoveFromCart()">
+        <input type="button" 
+               class="btn btn-danger" 
+               value="Remove from cart" 
+               (click)="onClickRemoveFromCart()">
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
-  books: Book[] = [];
+  bookList: Book[] = [];
 
   object: RootObject;
 
@@ -28,7 +28,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.as.bookListChanged.subscribe(
-      (books: Book[]) => { this.books = books; }
+      (books: Book[]) => { this.bookList = books; }
     );
 
   }

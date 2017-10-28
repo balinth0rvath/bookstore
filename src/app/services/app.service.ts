@@ -40,37 +40,35 @@ export class AppService {
 		}
 	}
 
-	addToCart(book: Book) {
-		if (!this.isInCart(book)) {
-			this.selectedBookList.push(book);
+	addToCart(bookToAdd: Book) {
+		if (!this.isInCart(bookToAdd)) {
+			this.selectedBookList.push(bookToAdd);
 			this.selectedBookListChanged.next(this.selectedBookList);
 			localStorage.setItem('cart',
 				JSON.stringify({ cart: this.selectedBookList }));
 		}
 	}
 
-	removeFromCart(b2: Book) {
-		if (this.isInCart(b2)) {
-			this.selectedBookList = this.selectedBookList.filter(book => book.id != b2.id);
+	removeFromCart(bookToRemove: Book) {
+		if (this.isInCart(bookToRemove)) {
+			this.selectedBookList = this.selectedBookList.filter(book => book.id != bookToRemove.id);
 			this.selectedBookListChanged.next(this.selectedBookList);
 			localStorage.setItem('cart',
 				JSON.stringify({ cart: this.selectedBookList }));
 		}
 	}
 
-	isInCart(b2: Book): boolean {
-		let book = this.selectedBookList.find(book => b2.id == book.id);
+	isInCart(bookToCheck: Book): boolean {
+		let book = this.selectedBookList.find(book => bookToCheck.id == book.id);
 		return (book != null);
 	}
 
 	fetchList(searchTerm: string) {
-
 		if (searchTerm == '') {
 			this.bookList = [];
 			this.bookListChanged.next(this.bookList.slice());
 			return;
 		}
-
 		var headers = new Headers({
 			'Content-type': 'application/json; charset=' + Config.encoding
 		});
